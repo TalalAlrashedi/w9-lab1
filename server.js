@@ -1,7 +1,7 @@
 const express = require("express");
-const https = require("https");
+
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.get("/", (req, res) => {
   res.redirect(303, "/hello-world");
@@ -23,9 +23,9 @@ app.get("/image", (req, res) => {
 });
 
 app.use((req, res) => {
-  res.status(405).send(`${req.method} is not supported on ${req.path}`);
+  res.status(405).send(`${req.method} is not supported on url ${req.path}`);
 });
 
-app.listen(port, () => {
+app.listen(port, "127.0.0.1", () => {
   console.log(`Server running at http://localhost:${port}`);
 });
